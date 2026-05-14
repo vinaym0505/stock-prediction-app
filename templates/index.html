@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Prediction</title>
+
+    <style>
+        body{
+            font-family: Arial;
+            background:#111;
+            color:white;
+            text-align:center;
+            margin-top:100px;
+        }
+
+        input{
+            padding:10px;
+            width:200px;
+        }
+
+        button{
+            padding:10px 20px;
+            cursor:pointer;
+        }
+    </style>
+
+</head>
+<body>
+
+    <h1>Stock Price Prediction</h1>
+
+    <input type="text" id="stock" placeholder="Enter Stock Symbol">
+
+    <button onclick="predict()">Predict</button>
+
+    <h2 id="result"></h2>
+
+<script>
+
+async function predict(){
+
+    const stock = document.getElementById("stock").value;
+
+    const response = await fetch("/predict",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+            stock:stock
+        })
+    });
+
+    const data = await response.json();
+
+    document.getElementById("result").innerHTML =
+        "Predicted Price: " + data.prediction;
+}
+
+</script>
+
+</body>
+</html>
