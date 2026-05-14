@@ -2,7 +2,7 @@ async function predict(){
 
     const stock = document.getElementById("stock").value;
 
-    const response = await fetch("YOUR_BACKEND_URL/predict",{
+    const response = await fetch("https://stock-prediction-app-o3fy.onrender.com//predict",{
         method:"POST",
         headers:{
             "Content-Type":"application/json"
