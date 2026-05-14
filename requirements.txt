@@ -1,7 +1,6 @@
 flask
 flask-cors
 gunicorn
-tensorflow
 numpy
 pandas
 scikit-learn
